@@ -11,7 +11,7 @@
             Check out what happens below. Now go change the value of message in
             our components script area and see what happens.
           </p>
-          <p>{{}}</p>
+          <p>{{ state.message }}</p>
         </div>
         <div class="border p-1">
           <h5>Two Way Data Binding</h5>
@@ -22,7 +22,7 @@
             value changes.
           </p>
           <!-- add a v-model to this input that will reference "myName" within the state object-->
-          <input />
+          <input v-model="state.myName"/>
           <!-- reference "myName" from the state -->
           <p>{{}}</p>
         </div>
@@ -36,8 +36,9 @@
             value changes.
           </p>
           <div class="red">
+
             <!-- add a class binding attribute to the p tag that references the state isActive value -->
-            <p>This text will turn green on active</p>
+            <p :class="{ active: state.isActive}">This text will turn green on active</p>
           </div>
         </div>
       </div>
@@ -52,10 +53,11 @@ export default {
   name: "binding-exercises",
   setup() {
     const state = reactive({
+      myName: "Aaron",
       //create a property called myName and set its value to "type your name here"
       message: "Super secret message here!",
       //change isActive to true
-      isActive: false,
+      isActive: true,
     });
     return { state };
   },
